@@ -14,11 +14,10 @@ Structure of the `src` folder is inspired by [this](https://blog.webdevsimplifie
 * `components` should be used to store components used across pages, organised into the following subfolders:
   * `ui` to store UI components like cards, modals, and buttons.
   * `form` to store components specifically used in forms such as checkboxes, inputs, date pickers, etc.
-* `context` should contain context used across multiple pages, created using `createSlice(...)` function of the Redux Toolkit.
 * `data` should be used to store data assets such as JSON files (store items, theme information, constants, etc.); also environment variable exporters.
 * `features` should contain one folder for each feature in the application. In each folder:
-  * (all folders listed here, apart from `features`)
-* `hooks` should contain global hooks used across multiple pages.
+  * (all folders listed here, apart from `features` and `plugins`)
+* `plugins` should contain Vue plugins; Vue plugins are always applied globally.
 * `layouts` should be used to store layout-based components such as sidebars, navigation bars, containers, etc.
 * `lib` should contain facades for the various different libraries used in the project. Using facades means libraries don't have to be directly imported into rest of application codebase multiple times, making it easier to update/replace library or customise it for own use.
 * `pages` should contain one folder for each page in the application. In each folder:
