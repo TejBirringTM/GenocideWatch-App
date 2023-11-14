@@ -27,6 +27,10 @@ Structure of the `src` folder is inspired by [this](https://blog.webdevsimplifie
 * `services` contains code used to interface with external APIs (instead of litering rest of application codebase with API interaction code).
 * `utils` should contain files that export simple [pure functions](https://blog.webdevsimplified.com/2020-09/pure-functions) such as formatters that do not cause side effects.
 
+## Things To Do
+
+* [ ] Fix GitHub Actions for automagic frontend deployment.
+
 ## Framework
 
 The app uses [Vue 3](https://vuejs.org/) with [TypeScript](https://www.typescriptlang.org/), with the [Vite](https://vitejs.dev/) development server and tooling.
