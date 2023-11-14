@@ -16,10 +16,11 @@ Structure of the `src` folder is inspired by [this](https://blog.webdevsimplifie
   * `form` to store components specifically used in forms such as checkboxes, inputs, date pickers, etc.
 * `data` should be used to store data assets such as JSON files (store items, theme information, constants, etc.); also environment variable exporters.
 * `features` should contain one folder for each feature in the application. In each folder:
-  * (all folders listed here, apart from `features` and `plugins`)
+  * (all folders listed here, apart from `features`, `plugins` and `state`)
 * `plugins` should contain Vue plugins; Vue plugins are always applied globally.
 * `layouts` should be used to store layout-based components such as sidebars, navigation bars, containers, etc.
-* `lib` should contain facades for the various different libraries used in the project. Using facades means libraries don't have to be directly imported into rest of application codebase multiple times, making it easier to update/replace library or customise it for own use.
+* `libs` should contain facades for the various different libraries used in the project. Using facades means libraries don't have to be directly imported into rest of application codebase multiple times, making it easier to update/replace library or customise it for own use.
+* `state` should contain global state as Pinia stores.
 * `pages` should contain one folder for each page in the application. In each folder:
   * `<component-name>.vue` should be the Vue component that represents the page.
   * other files (such as components, slices, and hooks) only ever used in the page should be placed here.
