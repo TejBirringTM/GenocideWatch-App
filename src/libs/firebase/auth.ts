@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword, signOut as _signOut, onAuthStateChanged, type User, sendPasswordResetEmail as _sendPasswordResetEmail, confirmPasswordReset as _confirmPasswordReset  } from "firebase/auth";
+import { signInWithEmailAndPassword, signOut as _signOut, onAuthStateChanged, type User, sendPasswordResetEmail as _sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "./firebase";
 import { ref } from "vue";
 
@@ -20,14 +20,6 @@ async function signOut() {
     }
 }
 
-onAuthStateChanged(auth, (user)=>{
-    if (user) {
-        activeUser.value = user;
-    } else {
-        activeUser.value = undefined;
-    }
-});
-
 async function sendPasswordResetEmail(email: string) {
     try {
         await _sendPasswordResetEmail(auth, email);
@@ -36,20 +28,19 @@ async function sendPasswordResetEmail(email: string) {
     }
 }
 
-async function confirmPasswordReset(code: string, newPassword: string) {
-    try {
-        await _confirmPasswordReset(auth, code, newPassword);
-    } catch (e) {
-        console.error(e);
+onAuthStateChanged(auth, (user)=>{
+    if (user) {
+        activeUser.value = user;
+    } else {
+        activeUser.value = undefined;
     }
-}
+});
 
 export function useAuth() {
     return {
         activeUser,
         signIn,
         signOut,
-        sendPasswordResetEmail,
-        confirmPasswordReset
+        sendPasswordResetEmail
     }
 }
