@@ -1,3 +1,30 @@
 @import url("../fonts/fragment-mono/fragment-mono.scss");
 @import url("../fonts/bebas-neue/bebas-neue.scss");
+@import url("../icons/flaticon.scss");
 @import url("./tailwind.scss");
+
+.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 40%;
+}
+
+html {
+    //* {
+      // no select
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -o-user-select: none;
+      user-select: none;
+      // no drag
+      -webkit-user-drag: none;
+      -khtml-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+      user-drag: none;
+      // no mouse events
+    //   pointer-events: none;
+    //}
+  }
+  
