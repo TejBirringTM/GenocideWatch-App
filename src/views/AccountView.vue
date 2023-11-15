@@ -2,7 +2,7 @@
     import Textbox from '@/components/form/Textbox.vue';
     import BigButton from '@/components/ui/BigButton.vue';
     import Link from '@/components/ui/Link.vue';
-    import {validateInput} from '@/libs/validate';
+    import {validateInput} from '@/utils/validate';
     import { useAuth } from '@/libs/firebase/auth';
     import { computed, ref } from 'vue';
     import {z} from 'zod';
@@ -51,4 +51,4 @@
             <BigButton text="Log Out" @click="auth.signOut" size="regular" block color="primary"/>
         </div>
     </div>
-</template>
+</template>@/utils/validate
