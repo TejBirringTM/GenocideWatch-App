@@ -1,3 +1,5 @@
+import defaultTheme from 'tailwindcss/defaultTheme';
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -5,7 +7,16 @@ module.exports = {
     "./src/**/*.{vue,js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      sans: [
+        "'Fragment Mono'",
+        ...defaultTheme.fontFamily.mono
+      ],
+      display: [
+        "Bebas Neue",
+        ...defaultTheme.fontFamily.sans
+      ]
+    }
   },
   plugins: [
     require('@tailwindcss/typography'),
