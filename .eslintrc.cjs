@@ -15,5 +15,8 @@ module.exports = {
   ignorePatterns: [
     'postcss.config.js',
     'tailwind.config.js'
-  ]
+  ],
+  rules: {
+    "vue/multi-word-component-names": 0
+  }
 }
