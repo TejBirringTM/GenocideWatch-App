@@ -4,9 +4,8 @@
 @import url("./tailwind.scss");
 
 .disabled {
-    cursor: not-allowed;
-    pointer-events: none;
-    opacity: 40%;
+  opacity: 40%;
+  cursor: not-allowed;
 }
 
 html {
