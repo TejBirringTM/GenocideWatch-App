@@ -5,4 +5,4 @@ export const themeOptions = [
 
 export type ThemeOption = typeof themeOptions[number];
 
-export const defaultTheme : ThemeOption = "business";
+export const defaultTheme : ThemeOption = "corporate";
