@@ -1,10 +1,10 @@
 <script setup lang="ts">
     import Textbox from '@/components/form/Textbox.vue';
-    import BigButton from '@/components/ui/BigButton.vue';
+    import Button from '@/components/ui/Button.vue';
     import Link from '@/components/ui/Link.vue';
     import {validateInput} from '@/utils/validate';
     import { useAuth } from '@/libs/firebase/auth';
-    import { computed, ref } from 'vue';
+    import { ref } from 'vue';
     import {z} from 'zod';
 
     const auth = useAuth();
@@ -18,8 +18,6 @@
         await auth.sendPasswordResetEmail(emailAddress.value);
         emailSent.value = true;
     }
-
-
 </script>
 
 <template>
@@ -31,13 +29,13 @@
                     <Textbox label="Email Address" autocomplete="email" v-model="emailAddress"/>
                     <Textbox label="Password" password v-model="password"/>
                 </div>
-            </div>
-            <div class="card-actions justify-end">
-                <BigButton text="Log In" icon="fi-ss-key" @click="auth.signIn(emailAddress, password)" size="regular" block color="primary"/>
+                <div class="card-actions justify-end mt-8">
+                    <Button text="Log In" icon="fi-ss-key" :click="()=>auth.signIn(emailAddress, password)" size="regular" block color="neutral" :disabled="!emailValid || password.length < 8"/>
+                </div>
             </div>
         </div>
-        <Link class="ml-4 sm:ml-0" color="secondary" size="small" :disabled="!emailValid" @click="sendPasswordResetEmail" v-if="!emailSent">Forgot your password?</Link>
-        <p class="text-secondary text-sm" v-else>Please check your inbox.</p>
+        <Link class="ml-4 sm:ml-0" color="secondary" size="small" :disabled="!emailValid" :click="sendPasswordResetEmail" v-if="!emailSent">Forgot your password?</Link>
+        <p class="text-info font-bold text-sm" v-else>Please check your inbox.</p>
     </div>
 
     <div class="card w-96 bg-base-200 mx-auto" v-else>
@@ -46,9 +44,10 @@
                 <p>You are logged in as:</p>
                 <p class="font-bold">{{ auth.activeUser.value.email }}</p>
             </div>
-        </div>
-        <div class="card-actions justify-end">
-            <BigButton text="Log Out" @click="auth.signOut" size="regular" block color="primary"/>
+            
+            <div class="card-actions justify-end mt-8">
+                <Button text="Log Out" :click="auth.signOut" size="regular" block color="neutral"/>
+            </div>
         </div>
     </div>
-</template>@/utils/validate
+</template>
