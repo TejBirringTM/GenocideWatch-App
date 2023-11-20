@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+    import { computed } from 'vue';
 
     const props = defineProps<{
         text?: string,
@@ -12,11 +12,16 @@ import { computed } from 'vue';
         block?: boolean,
         loading?: boolean,
         size: "large" | "regular" | "small" | "tiny",
-        color: "neutral" | "primary" | "secondary" | "accent" | "ghost" | "link" | "info" | "success" | "warning" | "error"
+        color?: "neutral" | "primary" | "secondary" | "accent" | "ghost" | "link" | "info" | "success" | "warning" | "error",
+        disabled?: boolean,
+        click?: Function
     }>();
 
     const btnClasses = computed(()=>{
         const classes : string[] = [];
+        if (props.disabled) {
+            classes.push("disabled");
+        }
         if (props.outline) {
             classes.push("btn-outline");
         }
@@ -46,9 +51,40 @@ import { computed } from 'vue';
                 classes.push("btn-xs");
                 break;
         }
-        classes.push(`btn-${props.color}`);
+        switch (props.color) {
+            case "neutral":
+                classes.push("btn-neutral");
+                break;
+            case "primary":
+                classes.push("btn-primary");
+                break;
+            case "secondary":
+                classes.push("btn-secondary");
+                break;
+            case "accent":
+                classes.push("btn-accent");
+                break;
+            case "ghost":
+                classes.push("btn-ghost");
+                break;                
+            case "link":
+                classes.push("btn-link");
+                break;
+            case 'info':
+                classes.push("btn-info");
+                break;                                 
+            case "warning":
+                classes.push("btn-warning");
+                break;                                 
+            case "success":
+                classes.push("btn-success");
+                break;                                 
+            case "error":
+                classes.push("btn-error");
+                break;                                                                                 
+        }        
         return classes.join(" ");
-    })
+    });
 
     const iconClasses = computed(()=>{
         const classes : string[] = [];
@@ -66,7 +102,7 @@ import { computed } from 'vue';
                 classes.push("text-lg")
         }
         return classes;
-    })
+    });
 
     const textClasses = computed(()=>{
         const classes : string[] = [];
@@ -84,11 +120,18 @@ import { computed } from 'vue';
                 classes.push("text-2xl tracking-wider")
         }
         return classes;
-    })
+    });
+
+    function onClick() {
+        if (props.disabled) return;
+        if (props.click) {
+            props.click();
+        }
+    }
 </script>
 
 <template>
-    <button class="btn" :class="btnClasses">
+    <button class="btn" :class="btnClasses" @click="onClick">
             <span class="loading loading-spinner mr-3" v-if="loading"></span>
             <i class="fi" :class="[icon, {'opacity-40':loading}, ...iconClasses]" v-if="icon"></i>
             <span class="font-display tracking-wide" :class="[{'ml-3':icon}, {'opacity-40':loading}, ...textClasses]" v-if="text">{{ text }}</span>
