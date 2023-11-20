@@ -1,16 +1,20 @@
 <script setup lang="ts">
-  import { useGenocideContexts } from '@/services/genocide-context';
   import Card from '@/components/ui/Card.vue';
   import Button from '@/components/ui/Button.vue';
+  import { useGenocideContexts } from '@/stores/genocide-contexts';
+  import { onBeforeMount } from 'vue';
 
   const genocideContexts = useGenocideContexts();
+  onBeforeMount(()=>{
+    genocideContexts.loadAll();
+  })
 </script>
 
 
 <template>
   <div class="max-w-4xl mx-auto mt-12 mb-40">
 
-    <Card class="bg-base-200" v-for="g of genocideContexts" :key="g.id">
+    <Card class="bg-base-200" v-for="g of genocideContexts.genocideContexts" :key="g.id">
       <h1 class="font-display text-6xl tracking-wider">{{g.name}} Genocide</h1>
       <p class="text-2xl">{{ g.nTestimonies }} testimonies</p>
       <template #actions>

@@ -14,6 +14,12 @@ const router = createRouter({
       path: '/account',
       name: 'account',
       component: AccountView
+    },
+    {
+      path: '/:genocideContext',
+      name: 'genocide-context',
+      component: ()=>import("../views/GenocideContextView.vue"),
+      props: true
     }
   ]
 })
