@@ -20,6 +20,11 @@ const router = createRouter({
       name: 'genocide-context',
       component: ()=>import("../views/GenocideContextView.vue"),
       props: true
+    },
+    {
+      path: '/sources',
+      name: 'sources',
+      component: ()=>import("../views/SourcesView.vue"),
     }
   ]
 })

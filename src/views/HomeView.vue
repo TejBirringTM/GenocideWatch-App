@@ -40,7 +40,7 @@
         </p>
       </div>
       <div class="flex flex-col sm:flex-row gap-4">
-        <Button text="View Sources" size="large" color="secondary" />
+        <Button text="View Sources" size="large" color="secondary" :click="()=>$router.push({name: 'sources'})"/>
       </div>
     </div>
 

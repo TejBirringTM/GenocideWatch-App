@@ -70,3 +70,4 @@ export const EvidenceType = z.union([
     z.literal('Indirect Evidence: Other')
 ]);
 
+export const Count = z.number().int().nonnegative();

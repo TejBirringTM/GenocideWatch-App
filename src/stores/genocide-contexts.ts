@@ -14,8 +14,10 @@ export const useGenocideContexts = defineStore("Genocide Contexts", ()=>{
         await loadAll();
         const contexts = genocideContexts.value as GenocideContext[];
         const idx = contexts.findIndex((gcd)=>(gcd.slug === slug));
-        const id = contexts[idx].id;
-        contexts[idx] = await getGenocideContext(id);
+        if (!contexts[idx].testimonies) {
+            const id = contexts[idx].id;
+            contexts[idx] = await getGenocideContext(id);
+        }
         return contexts[idx];
     }
 

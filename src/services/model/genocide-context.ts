@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { Evidence } from "./evidence";
+import { Count } from "./common";
 
 export const GenocideContext = z.object({
     id: z.string().uuid(),
@@ -10,7 +11,7 @@ export const GenocideContext = z.object({
             lat: z.number(),
             lng: z.number()
     }).nullish(),
-    nTestimonies: z.number().int().nonnegative(),
+    nTestimonies: Count,
     testimonies: Evidence.array().nullish()
 });
 

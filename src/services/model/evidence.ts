@@ -1,7 +1,5 @@
 import { z } from "zod";
-import { ContentType, DateTime, EvidenceType, GeoCoord, IncidentType, NeverEmptyText, UUID } from "./common";
-import { GenocideContext } from "./genocide-context";
-;
+import { ContentType, DateTime, EvidenceType, GeoCoord, IncidentType, NeverEmptyText } from "./common";
 
 export const Evidence = z.object({
     //
